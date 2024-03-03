@@ -1,41 +1,10 @@
-# EXAMPLE OF EKS RUNNING DOCKER IMAGES FROM ECR
+# EKS CLUSTER RUNNING DOCKER IMAGE FROM ECR
 ## REQUIREMENTS
 - [AWS CLI installed](https://aws.amazon.com/es/cli/)
 - [Docker installed](https://docs.docker.com/desktop/install/ubuntu/)
 - [Kubectl installed](https://kubernetes.io/es/docs/tasks/tools/included/install-kubectl-linux/)
 - [Terraform installed](https://developer.hashicorp.com/terraform/install)
 - [IAM Permissions](https://docs.aws.amazon.com/eks/latest/userguide/connector-grant-access.html)
-### IAM Permissions
-IAM Principals requires permissions to deploy all EKS resources correctly. Replace "1111222233333" with your account ID.
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "eks:ListFargateProfiles",
-                "eks:DescribeNodegroup",
-                "eks:ListNodegroups",
-                "eks:ListUpdates",
-                "eks:AccessKubernetesApi",
-                "eks:ListAddons",
-                "eks:DescribeCluster",
-                "eks:DescribeAddonVersions",
-                "eks:ListClusters",
-                "eks:ListIdentityProviderConfigs",
-                "iam:ListRoles"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "ssm:GetParameter",
-            "Resource": "arn:aws:ssm:*:111122223333:parameter/*" 
-        }
-    ]
-}
-```
 
 ## Create an ECR registry & push your image to ECR
 [Tutorial](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-create-repository)
